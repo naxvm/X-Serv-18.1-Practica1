@@ -3,6 +3,9 @@ PRÁCTICA TERMINADA
 
 Práctica 1 (Ejercicio 18.1): Web acortadora de URLs
 
+## Funcionamiento
+El fichero ejecutable creará un objeto de la clase webapp.webApp, cuyos parámetros serán máquina y puerto donde arrancará el servidor, y nombre del fichero CSV donde están almacenadas/se almacenarán las URLs acortadas. Los campos ya existentes se volcarán por pantalla al arrancar el servidor, y en caso de no existir dicho fichero, se creará, actualizándose cada vez que llegue una nueva petición. 
+
 ## Enunciado
 
 Esta práctica tendrá como objetivo la creación de una aplicación web simple para acortar URLs. La aplicación funcionará únicamente con datos en memoria: se supone que cada vez que la aplicación muera y vuelva a ser lanzada, habrá perdido todo su estado anterior. La aplicación tendrá que realizarse según un esquema de clases similar al explicado en clase.
