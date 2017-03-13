@@ -2,7 +2,7 @@
 
 import webapp
 import csv
-
+from urllib import parse
 class shortenApp(webapp.webApp):
 
     def initializeDicts(self):
@@ -11,13 +11,14 @@ class shortenApp(webapp.webApp):
             self.newDB = False
             with open(self.filename) as csvfile:
                 reader = csv.DictReader(csvfile)
+                print('Contenido de la DB:')
                 for row in reader:
                     self.shortenedURLs[row['larga']] = row['corta']
                     print(row['larga'], row['corta'])
                     self.longURLs[row['corta']] = row['larga']
         except FileNotFoundError:
             pass # No existe el fichero. Los diccionarios se quedan vacíos
-            print('FileNotFoundError')
+            print(self.filename, 'not found. Creating it...')
             self.newDB = True
         except KeyError:
             print('Error: el diccionario está dañado. Comprueba que las cabeceras de CSV estén colocadas al principio')
@@ -122,6 +123,7 @@ class shortenApp(webapp.webApp):
                 returnCode = '404 Not Found'
                 responseBody = self.emptyRequest
             else:
+                newOne = parse.unquote(newOne,'utf-8','replace')
                 if newOne[0:7] != 'http://' and newOne[0:8] != 'https://':
                     # la página está mal pasada
                     newOne = 'http://' + newOne
@@ -157,4 +159,4 @@ class shortenApp(webapp.webApp):
 
 
 if __name__ == '__main__':
-    app = shortenApp('localhost',1234, filename='direcciones.csv')
+    app = shortenApp('localhost',1234, filename='direccioness.csv')
