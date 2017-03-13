@@ -1,4 +1,6 @@
 # X-Serv-18.1-Practica1
+# Falta convertir el string que llega desde el cuerpo del POST (http%3A%2F%2F = http://)
+
 Práctica 1 (Ejercicio 18.1): Web acortadora de URLs
 
 ## Enunciado
